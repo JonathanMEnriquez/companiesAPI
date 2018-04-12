@@ -61,8 +61,8 @@ app.post('/companies/:id/employee', function (req, res) {
             res.json({error: err});
         } else {
             let employees = foundCompany.employees;
-            employees += req.body.employees;
-            company.save(function(err, company) {
+            employees.push(req.body.employee)
+            foundCompany.save(function(err, company) {
                 if (err) {
                     console.log(err);
                     res.json({message: "Error", error: err});
